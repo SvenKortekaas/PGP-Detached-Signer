@@ -24,9 +24,17 @@ public class main {
 		File directory = new File(".");
 		List<String> fileList = new ArrayList<String>();
 		
-		//Get all the files from a directory
-		//and put it in the List<String> fileList
-		File [] fList = directory.listFiles();
+		fileList = makeFileList(directory, fileList);
+		
+		signer(directory, fileList);
+		
+	}
+
+	//Get all the files from a directory
+	//and put it in the List<String> fileList and returns it
+	private static List<String> makeFileList(File directory, List<String> fileList) {
+		
+		File[] fList = getFileList(directory);
 		
 		for (File file : fList) {
 			if (file.isFile()) {
@@ -35,24 +43,38 @@ public class main {
 			}
 		}
 		
-		int fileListSize = fileList.size();
+		return fileList;
+	}
+
+	private static void signer(File directory, List<String> fileList) throws IOException {
+		
+		int fileListSize = getListStringSize(fileList);
 		
 		for (int i = 0; i < fileListSize; i++) {
 		
-		ProcessBuilder builder = new ProcessBuilder(
-	            "cmd.exe", "/c", "cd "+"\""+directory.getCanonicalPath()+"\""+" && gpg --detach-sign --armor "+"\""+fileList.get(i)+"\"");
-	        builder.redirectErrorStream(true);
-	        Process p = builder.start();
-	        BufferedReader r = new BufferedReader(new InputStreamReader(p.getInputStream()));
-	        String line;
-	        while (true) {
-	            line = r.readLine();
-	            if (line == null) { break; }
-	            System.out.println(line);
-	        }
+			ProcessBuilder builder = new ProcessBuilder(
+		            "cmd.exe", "/c", "cd "+"\""+directory.getCanonicalPath()+"\""+" && gpg --detach-sign --armor "+"\""+fileList.get(i)+"\"");
+		        builder.redirectErrorStream(true);
+		        Process p = builder.start();
+		        BufferedReader r = new BufferedReader(new InputStreamReader(p.getInputStream()));
+		        String line;
+		        while (true) {
+		            line = r.readLine();
+		            if (line == null) { break; }
+		            System.out.println(line);
+		        }
 	        
 		}
-		
+	}
+
+	private static File[] getFileList(File directory) {
+		File [] fList = directory.listFiles();
+		return fList;
+	}
+
+	private static int getListStringSize(List<String> fileList) {
+		int fileListSize = fileList.size();
+		return fileListSize;
 	}
 
 }
