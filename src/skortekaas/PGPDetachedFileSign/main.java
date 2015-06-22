@@ -38,7 +38,6 @@ public class main {
 		int fileListSize = fileList.size();
 		
 		for (int i = 0; i < fileListSize; i++) {
-			
 		
 		ProcessBuilder builder = new ProcessBuilder(
 	            "cmd.exe", "/c", "cd "+"\""+directory.getCanonicalPath()+"\""+" && gpg --detach-sign --armor "+"\""+fileList.get(i)+"\"");
