@@ -11,7 +11,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * @author Sven Kortekaas - https://github.com/SvenKortekaas - http://skortekaas.nl
+ * @author Sven Kortekaas - https://github.com/SvenKortekaas
  *
  */
 public class main {
