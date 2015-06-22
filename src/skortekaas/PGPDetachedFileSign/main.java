@@ -21,7 +21,6 @@ public class main {
 	 * @throws IOException 
 	 */
 	public static void main(String[] args) throws IOException {
-		// TODO Auto-generated method stub
 		File directory = new File(".");
 		List<String> fileList = new ArrayList<String>();
 		
