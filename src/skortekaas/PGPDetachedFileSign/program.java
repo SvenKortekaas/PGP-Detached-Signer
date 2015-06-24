@@ -17,7 +17,7 @@ import java.util.List;
  * @since 22-06-2015
  *
  */
-public class main {
+public class program {
 
 	/**
 	 * @param args Do not use them
