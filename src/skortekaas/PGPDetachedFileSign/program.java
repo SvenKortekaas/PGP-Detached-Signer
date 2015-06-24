@@ -21,6 +21,7 @@ public class program {
 	 * @param args
 	 *            Do not use them
 	 * @throws IOException
+	 *             IOException for signer(directory, fileList)
 	 */
 	public static void main(String[] args) throws IOException {
 		File directory = new File(".");
@@ -33,8 +34,7 @@ public class program {
 	}
 
 	/**
-	 * Gets all the files from a directory and puts it in a List<String> and
-	 * returns it
+	 * Gets all the files from a directory and puts it in a List and returns it
 	 * 
 	 * @param directory
 	 *            the directory for the file list
@@ -64,6 +64,8 @@ public class program {
 	 * @param fileList
 	 *            the files that need to get signed
 	 * @throws IOException
+	 *             IOException for ProcessBuilder, BufferedReader and
+	 *             InputStreamReader
 	 */
 	private static void signer(File directory, List<String> fileList)
 			throws IOException {
@@ -105,10 +107,10 @@ public class program {
 	}
 
 	/**
-	 * This method gives you the number as an integer of items in a List<String>
+	 * This method gives you the number as an integer of items in a List
 	 * 
 	 * @param fileList
-	 *            the list in List<String>
+	 *            the list in List
 	 * @return the size of the given List as an integer
 	 */
 	private static int getListStringSize(List<String> fileList) {
